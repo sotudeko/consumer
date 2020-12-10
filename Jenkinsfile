@@ -17,19 +17,11 @@ pipeline {
         stage('Nexus IQ Scan'){
             steps {
                 script{
-                    try {
-                        def policyEvaluation = nexusPolicyEvaluation failBuildOnNetworkError: true, 
-                                                                     iqApplication: selectedApplication('consumer-ci'), 
-                                                                     iqScanPatterns: [[scanPattern: '**/*.war']], 
-                                                                     iqStage: "${iqstage}", 
-                                                                     jobCredentialsId: "${jenkinsid}"
-
-                        echo "Nexus IQ scan succeeded: ${policyEvaluation.applicationCompositionReportUrl}"
-                    } 
-                    catch (error) {
-                        echo "Nexus IQ scan vulnerabilities detected', ${policyEvaluation.applicationCompositionReportUrl}"
-                        throw error
-                    }
+                        nexusPolicyEvaluation failBuildOnNetworkError: true, 
+                                              iqApplication: selectedApplication('consumer-ci'), 
+                                              iqScanPatterns: [[scanPattern: '**/*.war']], 
+                                              iqStage: "${iqStage}", 
+                                              jobCredentialsId: "${jobCredentialsId}"
                 }
             }
         }
