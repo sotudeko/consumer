@@ -53,7 +53,7 @@
             <artifactId>clm-maven-plugin</artifactId>
             <configuration>
               <serverUrl>http://localhost:8870</serverUrl>
-              <applicationId>consumer</applicationId>
+              <applicationId>consumer-ci</applicationId>
               <stage>build</stage>
               <serverId>clm_server</serverId>
             </configuration>
