@@ -1,0 +1,61 @@
+{
+  "applicationId" : "bomtest",
+  "scanId" : "cc132cb74fe54710bd7ed0b13cb3ccd3",
+  "reportHtmlUrl" : "http://localhost:8070/ui/links/application/bomtest/report/cc132cb74fe54710bd7ed0b13cb3ccd3",
+  "reportPdfUrl" : "http://localhost:8070/ui/links/application/bomtest/report/cc132cb74fe54710bd7ed0b13cb3ccd3/pdf",
+  "reportDataUrl" : "http://localhost:8070/api/v2/applications/bomtest/reports/cc132cb74fe54710bd7ed0b13cb3ccd3/raw",
+  "policyAction" : "None",
+  "policyEvaluationResult" : {
+    "alerts" : [ {
+      "trigger" : {
+        "policyId" : "31451a4b2cfa48fe8f618ed57c44bcdb",
+        "policyName" : "Component-Unknown",
+        "threatLevel" : 2,
+        "policyViolationId" : "72251732ea5048baa6563f67b0e97e1e",
+        "componentFacts" : [ {
+          "componentIdentifier" : null,
+          "hash" : "7a90dd45de262461f776",
+          "constraintFacts" : [ {
+            "constraintId" : "d857b072e73e40a4a4383f2c9894aea5",
+            "constraintName" : "Unknown 3rd party component",
+            "operatorName" : "AND",
+            "conditionFacts" : [ {
+              "conditionTypeId" : "MatchState",
+              "conditionIndex" : 0,
+              "summary" : "Match State is unknown",
+              "reason" : "Match state was 'Unknown'",
+              "reference" : null,
+              "triggerJson" : null
+            }, {
+              "conditionTypeId" : "Proprietary",
+              "conditionIndex" : 0,
+              "summary" : "Proprietary is false",
+              "reason" : "Component does not contain proprietary packages",
+              "reference" : null,
+              "triggerJson" : null
+            }, {
+              "conditionTypeId" : "DataSource",
+              "conditionIndex" : 0,
+              "summary" : "Data Source has support for identity",
+              "reason" : "Data Source has support for Identity",
+              "reference" : null,
+              "triggerJson" : null
+            } ]
+          } ],
+          "pathnames" : [ ],
+          "displayName" : null
+        } ]
+      },
+      "actions" : [ ]
+    } ],
+    "affectedComponentCount" : 1,
+    "criticalComponentCount" : 0,
+    "severeComponentCount" : 0,
+    "moderateComponentCount" : 1,
+    "criticalPolicyViolationCount" : 0,
+    "severePolicyViolationCount" : 0,
+    "moderatePolicyViolationCount" : 1,
+    "grandfatheredPolicyViolationCount" : 0,
+    "totalComponentCount" : 1
+  }
+}

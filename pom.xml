@@ -17,7 +17,12 @@
       <dependency>
         <groupId>org.demo</groupId>
         <artifactId>producer</artifactId>
-        <version>1.4</version>
+        <version>1.6</version>
+      </dependency>
+      <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>2.10.9</version>
       </dependency>
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
@@ -29,6 +34,13 @@
         <artifactId>jackson-databind</artifactId>
         <version>2.9.9</version>
       </dependency>
+			<!--
+      <dependency>
+      <groupId>com.github.everit-org.json-schema</groupId>
+      <artifactId>org.everit.json.schema</artifactId>
+      <version>1.12.1</version>
+      </dependency>
+			-->
     </dependencies>
 
     <build>
@@ -45,6 +57,34 @@
             </execution>
           </executions>
         </plugin>
+
+
+				<plugin>
+        <groupId>org.cyclonedx</groupId>
+        <artifactId>cyclonedx-maven-plugin</artifactId>
+        <!-- <version>2.1.1</version> -->
+        <executions>
+            <execution>
+                <phase>verify</phase>
+                <goals>
+                    <goal>makeAggregateBom</goal>
+                </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <projectType>library</projectType>
+            <schemaVersion>1.2</schemaVersion>
+            <includeBomSerialNumber>true</includeBomSerialNumber>
+            <includeCompileScope>true</includeCompileScope>
+            <includeProvidedScope>true</includeProvidedScope>
+            <includeRuntimeScope>true</includeRuntimeScope>
+            <includeSystemScope>true</includeSystemScope>
+            <includeTestScope>false</includeTestScope>
+            <includeLicenseText>false</includeLicenseText>
+            <outputFormat>all</outputFormat>
+        </configuration>
+    </plugin>
+
       </plugins>
       <pluginManagement>
         <plugins>
@@ -53,7 +93,7 @@
             <artifactId>clm-maven-plugin</artifactId>
             <configuration>
               <serverUrl>http://localhost:8870</serverUrl>
-              <applicationId>consumer-ci</applicationId>
+              <applicationId>consumer-prop</applicationId>
               <stage>build</stage>
               <serverId>clm_server</serverId>
             </configuration>
