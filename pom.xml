@@ -6,7 +6,7 @@
 
     <groupId>org.demo</groupId>
     <artifactId>consumer</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
          
     <properties>
          <maven.compiler.target>1.8</maven.compiler.target>
@@ -84,6 +84,13 @@
           </configuration>
         </plugin> -->
 
+        <plugin>
+          <groupId>org.cyclonedx</groupId>
+          <artifactId>cyclonedx-maven-plugin</artifactId>
+          <version>2.5.1</version>
+      </plugin>
+
+        
       </plugins>
       <pluginManagement>
         <plugins>
@@ -92,12 +99,40 @@
             <artifactId>clm-maven-plugin</artifactId>
             <configuration>
               <serverUrl>http://localhost:8070</serverUrl>
-              <applicationId>consumerapp</applicationId>
+              <applicationId>consumerapp2</applicationId>
               <stage>build</stage>
               <username>admin</username>
 	            <password>admin123</password>
             </configuration>
           </plugin>
+
+          <plugin>
+            <groupId>org.cyclonedx</groupId>
+            <artifactId>cyclonedx-maven-plugin</artifactId>
+            <version>2.5.1</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>makeAggregateBom</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <projectType>library</projectType>
+                <schemaVersion>1.3</schemaVersion>
+                <includeBomSerialNumber>true</includeBomSerialNumber>
+                <includeCompileScope>true</includeCompileScope>
+                <includeProvidedScope>true</includeProvidedScope>
+                <includeRuntimeScope>true</includeRuntimeScope>
+                <includeSystemScope>true</includeSystemScope>
+                <includeTestScope>false</includeTestScope>
+                <includeLicenseText>false</includeLicenseText>
+                <outputFormat>all</outputFormat>
+                <outputName>bom</outputName>
+            </configuration>
+        </plugin>
+
         </plugins>
       </pluginManagement>
     </build>
